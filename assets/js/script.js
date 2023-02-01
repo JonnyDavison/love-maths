@@ -14,6 +14,11 @@ document.addEventListener('DOMContentLoaded', function(){
             }
         })
     }
+    document.getElementById('answer-box').addEventListener('keydown', function(event){
+        if (event.key === "Enter"){
+            checkAwnser();
+        }
+    })
     runGame('addition');
 })
 /**
@@ -21,6 +26,9 @@ document.addEventListener('DOMContentLoaded', function(){
  * and after the user's answer has been processed
  */
 function runGame(gameType){
+
+    document.getElementById('answer-box').value = ""
+    document.getElementById('answer-box').focus()
     //creates 2 random numbers
     let num1 = Math.floor(Math.random()*25)+1;
     let num2 = Math.floor(Math.random()*25)+1;
@@ -34,7 +42,7 @@ function runGame(gameType){
     } else if (gameType === "division"){
         displayDivideQuestion(num1, num2);
     } else {
-        alert(`Unknown game type ${gameType}`)
+        alert(`Unknown game type ${gameType}`);
         throw `Unknown game type ${gameType}. Aborting!`;
     }
 }
